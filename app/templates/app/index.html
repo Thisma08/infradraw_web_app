@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/index_style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Enter A-Code:</h2>
+        <form method="GET" action="{% url 'select_environment' %}">
+            <br>
+            <input type="text" id="a_code" name="a_code">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    <div>
+</body>
+</html>

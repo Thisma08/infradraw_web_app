@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Environment</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/select_environment_style.css' %}">
+
+</head>
+<body>
+     <div class="container">
+        <h2>Select an environment</h2>
+        <form method="GET" action="{% url 'open_svg' %}">
+            <select id="environment" name="environment">
+                {% for environment in environments %}
+                    <option value="{{ environment.env_id }}">{{ environment.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="hidden" name="a_code" value="{{ application.aCode }}">
+            <input type="submit" value="Submit">
+        </form>
+        {% if error_message %}
+            <div class="error">
+                <p>{{ error_message }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
